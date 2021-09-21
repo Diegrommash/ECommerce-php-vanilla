@@ -87,5 +87,22 @@ class Utils{
         
        return $message;
     }
+
+    public static function cartStats(){
+        $cartStats = array(
+            'total' => 0,
+            'count' => 0
+        );
+
+        if(isset($_SESSION['cart'])){
+            $cartStats['count'] = count($_SESSION['cart']);
+
+            foreach($_SESSION['cart'] as $product){
+                $cartStats['total'] += $product['product']['price'] * $product['quantity'];
+            }
+        }
+        
+        return $cartStats;
+    }
     
 }

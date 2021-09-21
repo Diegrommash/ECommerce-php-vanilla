@@ -1,7 +1,26 @@
             <div id="contenido">
                 <!-- Barra lateral -->
                 <aside id="lateral">
+
+                    <div class="cart-aside">
+                        <h3>Carrito</h3>
+                        <?php $cartStats = Utils::cartStats()?>
+                        <ul>
+                            <li>                             
+                                <a href="<?=base_url?>cart/index"> Productos (<?= $cartStats['count']?>)</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url?>cart/index"> Total: $ (<?= $cartStats['total']?>)</a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url?>cart/index"> Ver el carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div id="login" class="block_aside">
+
+                        <h3>Login</h3>
 
                         <?php if(!isset($_SESSION['identity'])): ?>
                             <form action="<?=base_url?>user/login" method="POST">

@@ -10,7 +10,7 @@
             <h2><?= $product->ProductName?></h2>           
         </a>
         <p><?= $product->Price?> patacones</p>
-        <a href="#">Comprar</a>
+        <a href="<?=base_url?>cart/add&id=<?=$product->Id?>" class="button">Comprar</a>
     </div>
 
 <?php endwhile; ?>

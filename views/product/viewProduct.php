@@ -15,7 +15,7 @@
                 <span class="price-simbol-money">$</span>
                 <span class="price-price"><?= $product->Price?> </span>
             </p>
-            <a href="#">Comprar</a>
+            <a href="<?=base_url?>cart/add&id=<?=$product->Id?>" class="button">Comprar</a>
         </div>
     </div>
 
