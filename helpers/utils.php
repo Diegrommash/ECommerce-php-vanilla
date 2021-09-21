@@ -98,7 +98,7 @@ class Utils{
             $cartStats['count'] = count($_SESSION['cart']);
 
             foreach($_SESSION['cart'] as $product){
-                $cartStats['total'] += $product['product']['price'] * $product['quantity'];
+                $cartStats['total'] += $product['product']->Price * $product['quantity'];
             }
         }
         

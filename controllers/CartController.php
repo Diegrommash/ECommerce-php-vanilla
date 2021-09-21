@@ -24,7 +24,7 @@ class CartController{
         if(isset($_SESSION['cart'])){
             $productExits = false;
             foreach($_SESSION['cart'] as $index => $element){
-                if($element['Id'] == $product_id){
+                if($element['product']->Id == $product_id){
                     $_SESSION['cart'][$index]['quantity']++;
                     $productExits = true;
                 }
