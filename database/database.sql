@@ -51,13 +51,14 @@ OrderState      varchar(20) not null,
 OrderDate       date,
 OrderTime       time,
 CONSTRAINT pk_Orders PRIMARY KEY(Id),
-CONSTRAINT fk_Orders_Users FOREIGN KEY(UserId) REFERENCES Orders(Id)
+CONSTRAINT fk_Orders_Users FOREIGN KEY(UserId) REFERENCES Users(Id)
 )ENGINE=InnoDb;
 
 CREATE TABLE IF NOT EXISTS Orders2Products(
 Id              int(255) auto_increment not null,
 OrderId         int(255) not null,
 ProductId       int(255) not null,
+Quantity        int(255) not null,
 CONSTRAINT pk_Orders2Products PRIMARY KEY(Id),
 CONSTRAINT fk_Orders2Products_Orders FOREIGN KEY(OrderId) REFERENCES Orders(Id),
 CONSTRAINT fk_Orders2Products_Products FOREIGN KEY(ProductId) REFERENCES Products(Id)

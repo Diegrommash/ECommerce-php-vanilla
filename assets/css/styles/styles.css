@@ -438,3 +438,18 @@ span.price-simbol-money {
     padding:2px;
     margin: 7px;
 }
+/*yo*/
+.makeToOrder {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row-reverse;
+}
+
+.makeToOrder span {
+    margin-right: 10px;
+}
+
+.makeToOrder-button {
+    width: 113px;
+    margin-top: 10px;
+}

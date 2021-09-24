@@ -1,6 +1,23 @@
-<h1>Carrito de compras</h1>
+<h1>Pedido confirmado</h1>
 
-<?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) >= 1): ?>
+<?php if(isset($_SESSION['order']) && $_SESSION['order'] == 'complete'): ?>
+    <p>El pedido esta confirmado, ahora paga mugriento!!!.</p>    
+<?php elseif(isset($_SESSION['order']) && $_SESSION['order'] != 'complete'): ?>
+    <p>Tu pedido no se pudo confirmar.</p>
+<?php endif;?>
+
+<h2>Datos del pedido</h2>
+<div class="confirm-orderDates">
+    <div>
+        Numero de pedido:
+    </div>
+    <div>
+        Monto total:
+    </div>
+    <div>
+        Productos:
+    </div>
+</div>
 <table class="cart-table">
     <tr>
         <th>imagen</th>
@@ -9,10 +26,11 @@
         <th>unidades</th>
     </tr>
     
-    <?php 
+    <!--<?php 
         foreach($_SESSION['cart'] as $index => $element):
         $product = $element['product'];
-    ?>
+    ?>-->
+
     <tr>
         <td>
             <?php if($product->Img != null): ?>
@@ -33,14 +51,4 @@
     </tr>
     <?php endforeach; ?>
     
-
 </table>
-<?php endif; ?>
-<div class="makeToOrder">
-<?php $cartStats = Utils::cartStats() ?>
-    <a href="<?=base_url?>order/index" class="button , makeToOrder-button">Hacer el pedido</a>
-    <span>
-        Total: $ <?= $cartStats['total'] ?>         
-    </span>
-    
-</div>
