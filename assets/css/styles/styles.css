@@ -438,7 +438,7 @@ span.price-simbol-money {
     padding:2px;
     margin: 7px;
 }
-/*yo*/
+/*yo - makeToOrder*/
 .makeToOrder {
     display: flex;
     align-items: baseline;
@@ -452,4 +452,16 @@ span.price-simbol-money {
 .makeToOrder-button {
     width: 113px;
     margin-top: 10px;
+}
+
+/*yo - confirm*/
+.comfirm-title {
+    margin: 10px 0px 0px;
+}
+.confirm-orderDates {
+    margin: 10PX;
+}
+.confirm-orderDates div{
+    margin: 10px 0px;
+    font-weight: bold;
 }

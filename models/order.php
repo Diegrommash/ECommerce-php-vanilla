@@ -118,6 +118,25 @@ class Order{
         $query = "SELECT * FROM Orders WHERE UserId = {$this->userId} ORDER BY Id DESC LIMIT 1;";
         $queryOrder = $this->db->query($query);
         $order = $queryOrder->fetch_object();
+
+        /*var_dump($query);
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        var_dump($queryOrder);
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        var_dump($order);
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        echo $this->db->error;
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        die();*/
+
         return $order;
     }
 
@@ -129,10 +148,21 @@ class Order{
     }
 
     public function getProductsByOrder($id){
-        $query = "SELECT p.*, op.Quantity FROM Orders p"
-                    ." INNER JOIN Orders2Products op ON p.Id = op.OrderId"
-                    ." WHERE p.OrderId = {$id};";
+        $query = "SELECT p.*, op.Quantity FROM Products p"
+                    ." INNER JOIN Orders2Products op ON p.Id = op.ProductId"
+                    ." WHERE op.OrderId = {$id};";
         $queryProducts = $this->db->query($query);
+
+        /*var_dump($query);
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        var_dump($queryProducts);
+        echo '<br>';
+        echo '-----------------';
+        echo '<br>';
+        echo $this->db->error;
+        die();*/
 
         return $queryProducts;
     }

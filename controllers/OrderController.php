@@ -49,7 +49,7 @@ class orderController{
     }
 
     public function confirm(){
-        if(isset($_SESSION['idenity'])){
+        if(isset($_SESSION['identity'])){
             $identity = $_SESSION['identity'];
             $orderObject = new Order();
             $orderObject->setUserId($identity->Id);
@@ -57,9 +57,20 @@ class orderController{
             $order = $orderObject->getLastByUser();
             $orderProducts = $orderObject->getProductsByOrder($order->Id);
 
+            /*var_dump($order);
+            echo '<br>';
+            var_dump($orderProducts);
+            echo '<br>';
+            die();*/
+
         }       
         require_once 'views/order/confirm.php';
     }
-    
+
+    public function myOrders(){
+
+        require_once 'views/order/myOrders.php';
+    }
+
 }
 
