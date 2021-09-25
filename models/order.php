@@ -119,24 +119,6 @@ class Order{
         $queryOrder = $this->db->query($query);
         $order = $queryOrder->fetch_object();
 
-        /*var_dump($query);
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        var_dump($queryOrder);
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        var_dump($order);
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        echo $this->db->error;
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        die();*/
-
         return $order;
     }
 
@@ -152,17 +134,6 @@ class Order{
                     ." INNER JOIN Orders2Products op ON p.Id = op.ProductId"
                     ." WHERE op.OrderId = {$id};";
         $queryProducts = $this->db->query($query);
-
-        /*var_dump($query);
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        var_dump($queryProducts);
-        echo '<br>';
-        echo '-----------------';
-        echo '<br>';
-        echo $this->db->error;
-        die();*/
 
         return $queryProducts;
     }

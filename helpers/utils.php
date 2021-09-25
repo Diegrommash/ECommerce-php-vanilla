@@ -104,5 +104,14 @@ class Utils{
         
         return $cartStats;
     }
+
+    public static function isLogued(){
+        if(!isset($_SESSION['identity'])){
+            header('Location:'.base_url);
+        }else{
+            return true;
+        }
+    }
+
     
 }

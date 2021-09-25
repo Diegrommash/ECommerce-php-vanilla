@@ -15,5 +15,5 @@
     </form>
 </div>
 <?php else: ?>
-    <h2>Logiate si queres continuar con tu compra!</h2>
+    <h2>Loguiate si queres continuar con tu compra!</h2>
 <?php endif;?>

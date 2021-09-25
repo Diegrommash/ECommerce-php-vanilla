@@ -56,18 +56,17 @@ class orderController{
 
             $order = $orderObject->getLastByUser();
             $orderProducts = $orderObject->getProductsByOrder($order->Id);
-
-            /*var_dump($order);
-            echo '<br>';
-            var_dump($orderProducts);
-            echo '<br>';
-            die();*/
-
         }       
         require_once 'views/order/confirm.php';
     }
 
     public function myOrders(){
+        Utils::isLogued();
+        $identity_Id = $_SESSION['identity']->Id;
+        $order = new Order();
+        $order->setUserId($identity_Id);
+
+        $orders = $order->getAllByUser();
 
         require_once 'views/order/myOrders.php';
     }
