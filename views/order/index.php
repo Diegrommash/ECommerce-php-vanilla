@@ -10,7 +10,7 @@
         <label for="location">Ciudad</label>
         <input type="text" name="location" placeholder="ingresar ciudad" required>
         <label for="direction">Direccion</label>
-        <input type="text" name="direction" placeholder="ingresar provincia" required>
+        <input type="text" name="direction" placeholder="ingresar direccion" required>
         <input type="submit" value="confirmar perdido">
     </form>
 </div>

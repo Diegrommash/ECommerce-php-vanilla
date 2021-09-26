@@ -71,5 +71,17 @@ class orderController{
         require_once 'views/order/myOrders.php';
     }
 
+    public function details(){
+        Utils::isLogued();
+        $orderId = $_GET['id'];
+        $orderObject = new Order();
+        $orderObject->setId($orderId);
+
+        $order = $orderObject->getOne();
+        $orderProducts = $orderObject->getProductsByOrder($order->Id);
+
+        require_once 'views/order/details.php';
+    }
+
 }
 

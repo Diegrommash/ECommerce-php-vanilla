@@ -438,6 +438,11 @@ span.price-simbol-money {
     padding:2px;
     margin: 7px;
 }
+/*yo-cart*/
+table.cart-table {
+    margin: 10px;
+}
+
 /*yo - makeToOrder*/
 .makeToOrder {
     display: flex;

@@ -11,7 +11,7 @@
     <?php while($order = $orders->fetch_object()) : ?>
     <tr>
         <td>
-            <?= $order->Id ?>
+            <a href="<?=base_url?>/order/details&id=<?= $order->Id ?>"><?= $order->Id ?></a>
         </td>
         <td>
             <?= $order->Cost ?>
