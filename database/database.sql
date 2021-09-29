@@ -15,7 +15,6 @@ CONSTRAINT uq_Email UNIQUE(Email)
 
 INSERT INTO Users VALUES(null, 'admin', 'admin', 'admin@admin.com', 'contraseña', 'admin', null);
 
-
 CREATE TABLE IF NOT EXISTS Categories(
 Id              int(255) auto_increment not null,
 CategoryName    varchar(100) not null,
@@ -40,18 +39,30 @@ CONSTRAINT pk_Products PRIMARY KEY(Id),
 CONSTRAINT fk_Products_Categories FOREIGN KEY(CategoryId) REFERENCES Categories(Id)
 )ENGINE=InnoDb;
 
+CREATE TABLE IF NOT EXISTS OrderStates(
+Id              int(255) auto_increment not null,
+StateName       varchar(255) not null,
+CONSTRAINT pk_OrderStates PRIMARY KEY(Id)
+)ENGINE=InnoDb;
+
+INSERT INTO OrderStates VALUES(null, 'confirm');
+INSERT INTO OrderStates VALUES(null, 'preparation');
+INSERT INTO OrderStates VALUES(null, 'ready');
+INSERT INTO OrderStates VALUES(null, 'sended');
+
 CREATE TABLE IF NOT EXISTS Orders(
 Id              int(255) auto_increment not null,
 UserId          int(255) not null,
+OrderStateId    int(255) not null,
 Province        varchar(100) not null,
 Location        varchar(100) not null,
 Direction       varchar(255) not null,
 Cost            float(200,2) not null,
-OrderState      varchar(20) not null,
 OrderDate       date,
 OrderTime       time,
 CONSTRAINT pk_Orders PRIMARY KEY(Id),
-CONSTRAINT fk_Orders_Users FOREIGN KEY(UserId) REFERENCES Users(Id)
+CONSTRAINT fk_Orders_Users FOREIGN KEY(UserId) REFERENCES Users(Id),
+CONSTRAINT fk_Orders_OrderStates FOREIGN KEY(OrderStateId) REFERENCES OrderStates(Id)
 )ENGINE=InnoDb;
 
 CREATE TABLE IF NOT EXISTS Orders2Products(

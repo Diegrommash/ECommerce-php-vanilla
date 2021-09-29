@@ -8,7 +8,7 @@ class Order{
     private $location;
     private $direction;
     private $cost;
-    private $orderState;
+    private $orderStateId;
     private $orderDate;
     private $orderTime;
     private $db;
@@ -36,8 +36,8 @@ class Order{
     public function setCost($cost){
         $this->cost = $this->db->real_escape_string($cost);
     }
-    public function setOrderState($orderState){
-        $this->orderState = $this->db->real_escape_string($orderState);
+    public function setOrderStateId($orderStateId){
+        $this->orderStateId = $this->db->real_escape_string($orderStateId);
     }
     public function setOrderDate($orderDate){
         $this->orderDate = $this->db->real_escape_string($orderDate);
@@ -64,8 +64,8 @@ class Order{
     public function getCost(){
         return $this->cost;
     }
-    public function getOrderState(){
-        return $this->orderState;
+    public function getOrderStateId(){
+        return $this->orderStateId;
     }
     public function getOrderDate(){
         return $this->orderDate;
@@ -75,7 +75,7 @@ class Order{
     }
 
     public function save(){
-        $query = "INSERT INTO Orders VALUES(null, {$this->userId}, '{$this->province}', '{$this->location}', '{$this->direction}', {$this->cost}, 'confirm', CURDATE(), CURTIME());";
+        $query = "INSERT INTO Orders VALUES(null, {$this->userId}, 1, '{$this->province}', '{$this->location}', '{$this->direction}', {$this->cost}, CURDATE(), CURTIME());";
         $save = $this->db->query($query);
 
         $result = false;
@@ -90,7 +90,7 @@ class Order{
     }
 
     public function edit(){
-        $query = "UPDATE Orders SET OrderState = '{$this->orserState}' WHERE Id = $this->id";
+        $query = "UPDATE Orders SET OrderStateId = $this->orderStateId WHERE Id = $this->id;";
         $save = $this->db->query($query);
 
         $result = false;
@@ -101,7 +101,7 @@ class Order{
     }
 
     public function getAll(){
-        $query = "SELECT * FROM Orders ORDER BY DESC;";
+        $query = "SELECT * FROM Orders ORDER BY Id DESC;";
         $queryOrders = $this->db->query($query);
 
         return $queryOrders;

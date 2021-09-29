@@ -1,6 +1,7 @@
 <?php
 require_once 'models/order.php';
 require_once 'models/orders2products.php';
+require_once 'models/orderStates.php';
 
 class orderController{
     
@@ -55,7 +56,12 @@ class orderController{
             $orderObject->setUserId($identity->Id);
 
             $order = $orderObject->getLastByUser();
-            $orderProducts = $orderObject->getProductsByOrder($order->Id);
+            if(is_object($order)){
+                $orderProducts = $orderObject->getProductsByOrder($order->Id);
+            }else{
+                $orderProducts = null;
+            }
+            
         }       
         require_once 'views/order/confirm.php';
     }
@@ -80,7 +86,48 @@ class orderController{
         $order = $orderObject->getOne();
         $orderProducts = $orderObject->getProductsByOrder($order->Id);
 
+        if(isset($_SESSION['admin'])){
+            $os = new OrderStates();
+            $orderStates = $os->getAll();
+        }
+
         require_once 'views/order/details.php';
+    }
+
+    public function manageOrders(){
+        Utils::isAdmin();
+
+        $order = new Order();
+        $orders = $order->getAll();
+
+        $orderStates = new OrderStates();
+        $orderStates = $orderStates->getAll();
+
+        require_once 'views/order/manageOrders.php';
+    }
+
+    public function editOrdersStates(){
+        utils::isAdmin();
+        if(isset($_GET['id']) && isset($_POST['orderStateId'])){
+            $id = $_GET['id'];
+            $orderStateId = $_POST['orderStateId'];
+
+            $order = new Order();
+            $order->setId($id);
+            $order->setOrderStateId($orderStateId);
+       
+            $edit = $order->edit();
+
+            if($edit){
+                $_SESSION['orderEdit'] = 'complete';
+            }else{
+                $_SESSION['orderEdit'] = 'failed';
+            }
+        }else{
+            $_SESSION['orderEdit'] = 'failed';
+        }
+        
+        Header("Location:".base_url."order/manageOrders");
     }
 
 }

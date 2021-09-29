@@ -113,5 +113,31 @@ class Utils{
         }
     }
 
+    public static function getOrderStateName($id){
+
+        $cuteName = '';
+        
+        switch ($id) {
+            case '1':
+               $cuteName = 'confirmado';
+                break;
+            case '2':
+                $cuteName = 'en preparacion';
+                break;
+            case '3':
+                $cuteName = 'listo para enviar';    
+                break;
+            case '4':
+                $cuteName = 'enviado';       
+            break;
+                                    
+            default:
+                $cuteName = 'estado no existente';
+                break;
+        }
+
+        return $cuteName;
+    }
+
     
 }

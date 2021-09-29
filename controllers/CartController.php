@@ -50,35 +50,36 @@ class CartController{
         if(isset($_GET['index'])){
             $index = $_GET['index'];
             unset($_SESSION['cart'][$index]);
-        }else{
-            Header('Location:'.base_url.'/cart/index');
         }
+        Header('Location:'.base_url.'/cart/index');
     }
 
     public function deleteAll(){
-        if(isset($_GET['cart'])){
-            $cart = $_GET['cart'];
-            unset($_SESSION['cart'][$cart]);
-        }else{
-            Header('Location:'.base_url.'/cart/index');
+        if(isset($_SESSION['cart'])){
+            $cart = $_SESSION['cart'];
+            unset($_SESSION['cart']);      
         }
+        Header('Location:'.base_url.'/cart/index');
     }
 
     public function up(){
         if(isset($_GET['index'])){
             $index = $_GET['index'];
-            $_GET['cart'][$index]['quantity']++;
-        }else{
-            Header('Location:'.base_url.'/cart/index');
+            $_SESSION['cart'][$index]['quantity']++;
         }
+        Header('Location:'.base_url.'/cart/index');
     }
 
 public function down(){
         if(isset($_GET['index'])){
             $index = $_GET['index'];
-            $_GET['cart'][$index]['quantity']--;
-        }else{
-            Header('Location:'.base_url.'/cart/index');
+            $_SESSION['cart'][$index]['quantity']--;
+
+            if($_SESSION['cart'][$index]['quantity'] == 0){
+				unset($_SESSION['cart'][$index]);
+			}
         }
+         Header('Location:'.base_url.'/cart/index');    
     }
+
 }

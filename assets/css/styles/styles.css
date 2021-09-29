@@ -226,12 +226,17 @@ button, .button{
     padding-right: 10px;
     color: white;
     background: #2979CD;
-    border: 1px solid #11608E;
+    border: 1px solid black;
     cursor:pointer;
 }
 
 .button{
     background: #33AE3D;
+    color: white !important;
+    text-decoration: none;
+}
+
+.button a{
     color: white !important;
     text-decoration: none;
 }
@@ -441,6 +446,42 @@ span.price-simbol-money {
 /*yo-cart*/
 table.cart-table {
     margin: 10px;
+}
+
+.up-down-button a{
+    text-decoration: none;
+    background-color: #33AE3D;
+    border: 1px solid black;
+    color: white !important;
+    width: 22px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.up-down-sp {
+    margin: 6px;
+}
+
+.delete-a {
+    margin-right: auto;
+}
+
+.delete-button-all{
+    background-color: grey;
+    text-decoration: none;
+    color: white !important;
+    border: 1px solid black;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.delete-button-target{
+    background-color: grey;
+    text-decoration: none;
+    color: white !important;
+    border: 1px solid black;
+    padding: 5px;
+
 }
 
 /*yo - makeToOrder*/
